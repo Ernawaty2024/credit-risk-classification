@@ -24,8 +24,6 @@ The model's performance was evaluated by:
 - Generating a **confusion matrix** to summarize the prediction results.
 - Printing the **classification report** to display precision, recall, and F1-score for each class.
 
-The following question was answered: *How well does the logistic regression model predict both the 0 (healthy loan) and 1 (high-risk loan) labels?*
-
 ### 3. Write a Credit Risk Analysis Report
 A brief report summarizing the model's performance was written. This report, included in the README.md file, covers the following key points:
 
@@ -36,18 +34,39 @@ The purpose of this analysis was to build a logistic regression model to predict
 
 ### Results
 The logistic regression model's performance was evaluated with the following key metrics:
-- **Accuracy Score**: The proportion of true results (both true positives and true negatives) among the total number of cases.
-- **Precision Score**: The number of true positive predictions divided by the total number of positive predictions.
-- **Recall Score**: The number of true positive predictions divided by the total number of actual positives (true positives and false negatives).
+- **Accuracy Score**: `99%`
+- **Precision Score**:
+**Precision (Healthy Loan - 0)**: `100%` 
+**Precision (High-Risk Loan - 1)**: `85%` 
+- **Recall Score**: 
+**Recall (Healthy Loan - 0)**: `99%`
+**Recall (High-Risk Loan - 1)**: `94%`
 
 The specific performance metrics were as follows:
-- **Accuracy**: `X%`
-- **Precision (Healthy Loan - 0)**: `X%`
-- **Precision (High-Risk Loan - 1)**: `X%`
-- **Recall (Healthy Loan - 0)**: `X%`
-- **Recall (High-Risk Loan - 1)**: `X%`
+- True Negatives (Healthy loans predicted correctly): `55,967`
+- False Positives (Healthy loans predicted as high-risk): `310`
+- False Negatives (High-risk loans predicted as healthy): `116`
+- True Positives (High-risk loans predicted correctly): `1,759`
 
-### Summary
-The logistic regression model provided a reasonable prediction for both healthy and high-risk loans. Based on the accuracy, precision, and recall scores, the model is capable of correctly identifying the majority of high-risk loans. However, further fine-tuning may be required to improve the precision and recall for predicting high-risk loans, as false positives (predicting a loan as high-risk when it is healthy) could lead to missed lending opportunities.
+### Classification Report:
 
-Given the results, the model could be recommended as an initial screening tool for identifying credit risk. However, more sophisticated techniques, or an ensemble of models, might provide better performance for more accurate decision-making in loan issuance.
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| **0** | 1.00      | 0.99   | 1.00     | 56,277  |
+| **1** | 0.85      | 0.94   | 0.89     | 1,875   |
+
+- **Macro Average Precision**: 0.92
+- **Macro Average Recall**: 0.97
+- **Weighted Average Precision**: 0.99
+- **Weighted Average Recall**: 0.99
+
+## Summary
+
+The machine learning model achieves a high accuracy of 99%, demonstrating strong performance in predicting both healthy and high-risk loans. The precision for healthy loans is perfect (100%), meaning that the model almost never incorrectly classifies a healthy loan as high-risk. However, the precision for high-risk loans is 85%, indicating that 15% of loans predicted to be high-risk are actually healthy.
+
+The recall for high-risk loans is 94%, which means the model correctly identifies 94% of high-risk loans. This high recall for high-risk loans suggests that the model is reliable in detecting risky borrowers, which is crucial for financial institutions looking to minimize defaults.
+
+### Recommendation:
+Given the high accuracy, strong precision, and recall for both classes, this model is recommended for identifying the creditworthiness of borrowers. However, additional tuning could be done to further improve the precision for high-risk loans to minimize false positives, thereby ensuring fewer healthy loans are misclassified as high-risk.
+
+
